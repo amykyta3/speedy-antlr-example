@@ -1,0 +1,8 @@
+**/__pycache__
+**/.antlr
+**/.vscode
+build/
+dist/
+*.egg-info/
+.eggs/
+.coverage
