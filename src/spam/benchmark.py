@@ -1,22 +1,17 @@
-import time
+import timeit
 
 import antlr4
 
 from .parser import sa_mygrammar
 
 
-def benchmark(input_file:str):
-    stream = antlr4.FileStream(input_file)
+def benchmark(input_file:str, count=100):
 
-    # Python implementation
-    start = time.perf_counter()
-    sa_mygrammar._py_parse(stream, "root")
-    py_elapsed = time.perf_counter() - start
+    cpp_elapsed = timeit.timeit(lambda: sa_mygrammar._cpp_parse(antlr4.FileStream(input_file), "root"), number=count)
+    py_elapsed = timeit.timeit(lambda: sa_mygrammar._py_parse(antlr4.FileStream(input_file), "root"), number=count)
 
-    # C++ Implementation
-    start = time.perf_counter()
-    sa_mygrammar._cpp_parse(stream, "root")
-    cpp_elapsed = time.perf_counter() - start
+    py_elapsed = py_elapsed / count
+    cpp_elapsed = cpp_elapsed / count
 
     print("py_elapsed:  %.3f" % (py_elapsed * 1000), "ms")
     print("cpp_elapsed: %.3f" % (cpp_elapsed * 1000), "ms")
