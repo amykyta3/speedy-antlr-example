@@ -1,10 +1,26 @@
 import sys
 import os
+import platform
 import fnmatch
 import setuptools
 
+target = platform.system().lower()
+PLATFORMS = {'windows', 'linux', 'darwin', 'cygwin'}
+for known in PLATFORMS:
+    if target.startswith(known):
+        target = known
+
+
 def run_setup(with_binary):
     if with_binary:
+        
+        extra_compile_args = {
+            'windows': ['/DANTLR4CPP_STATIC'],
+            'linux': ['-std=c++11'],
+            'darwin': ['-std=c++11'],
+            'cygwin': ['-std=c++11'],
+        }
+
         # Define an Extension object that describes the Antlr accelerator
         parser_ext = setuptools.Extension(
             # Extension name shall be at the same level as the sa_mygrammar_parser.py module
@@ -16,6 +32,8 @@ def run_setup(with_binary):
             # Rather than listing each C++ file (Antlr has a lot!), discover them automatically
             sources=get_files("src/spam/parser/cpp_src", "*.cpp"),
             depends=get_files("src/spam/parser/cpp_src", "*.h"),
+
+            extra_compile_args=extra_compile_args.get(target, [])
         )
         ext_modules = [parser_ext]
     else:
@@ -90,7 +108,11 @@ if not using_fallback:
     try:
         run_setup(with_binary=True)
     except BuildFailed:
-        using_fallback = True
+        if 'REQUIRE_CI_BINARY_BUILD' in os.environ:
+            # Require build to pass if running in travis-ci
+            raise
+        else:
+            using_fallback = True
 
 if using_fallback:
     run_setup(with_binary=False)
