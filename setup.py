@@ -108,7 +108,7 @@ if not using_fallback:
     try:
         run_setup(with_binary=True)
     except BuildFailed:
-        if 'REQUIRE_CI_BINARY_BUILD' in os.environ:
+        if 'SPAM_EXAMPLE_REQUIRE_CI_BINARY_BUILD' in os.environ:
             # Require build to pass if running in travis-ci
             raise
         else:
