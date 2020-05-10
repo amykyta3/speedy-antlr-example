@@ -64,8 +64,8 @@ env:
     # Don't deploy python2.7 (not supported), or osx 10.6 (no C++11 support)
     - CIBW_SKIP="cp27-* *macosx_10_6*"
 
-    - TWINE_USERNAME=amykyta3
-      # Note: TWINE_PASSWORD is set in Travis settings
+    # Note: TWINE_USERNAME and TWINE_PASSWORD is set in Travis settings
+    # Recommend using PyPi API tokens. See https://pypi.org/help/#apitoken
     
     # Signal setup.py to fail if binary build fails
     - SPAM_EXAMPLE_REQUIRE_CI_BINARY_BUILD
