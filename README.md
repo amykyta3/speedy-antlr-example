@@ -1,4 +1,4 @@
-![.github/workflows/build.yml](https://github.com/amykytae/speedy-antlr-example/workflows/.github/workflows/build.yml/badge.svg)
+![.github/workflows/build.yml](https://github.com/amykyta3/speedy-antlr-example/workflows/.github/workflows/build.yml/badge.svg)
 
 # Speedy Antlr Example
 
