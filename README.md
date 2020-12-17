@@ -1,3 +1,5 @@
+![.github/workflows/build.yml](https://github.com/amykytae/speedy-antlr-example/workflows/.github/workflows/build.yml/badge.svg)
+
 # Speedy Antlr Example
 
 This is an example project that demonstrates the use of
