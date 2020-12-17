@@ -1,5 +1,5 @@
 
-// Generated from MyGrammar.g4 by ANTLR 4.8
+// Generated from MyGrammar.g4 by ANTLR 4.9
 
 #pragma once
 
@@ -21,7 +21,7 @@ public:
     RuleRoot = 0, RuleExpr = 1, RuleLiteral = 2, RuleNumber = 3, RuleString_literal = 4
   };
 
-  MyGrammarParser(antlr4::TokenStream *input);
+  explicit MyGrammarParser(antlr4::TokenStream *input);
   ~MyGrammarParser();
 
   virtual std::string getGrammarFileName() const override;
@@ -108,8 +108,8 @@ public:
   ExprContext* expr(int precedence);
   class  LiteralContext : public antlr4::ParserRuleContext {
   public:
-    MyGrammarParser::NumberContext *xnum = nullptr;;
-    MyGrammarParser::String_literalContext *xstr = nullptr;;
+    MyGrammarParser::NumberContext *xnum = nullptr;
+    MyGrammarParser::String_literalContext *xstr = nullptr;
     LiteralContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     NumberContext *number();

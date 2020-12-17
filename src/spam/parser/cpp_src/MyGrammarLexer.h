@@ -1,5 +1,5 @@
 
-// Generated from MyGrammar.g4 by ANTLR 4.8
+// Generated from MyGrammar.g4 by ANTLR 4.9
 
 #pragma once
 
@@ -17,7 +17,7 @@ public:
     WS = 14
   };
 
-  MyGrammarLexer(antlr4::CharStream *input);
+  explicit MyGrammarLexer(antlr4::CharStream *input);
   ~MyGrammarLexer();
 
   virtual std::string getGrammarFileName() const override;

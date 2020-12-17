@@ -1,5 +1,5 @@
 
-// Generated from MyGrammar.g4 by ANTLR 4.8
+// Generated from MyGrammar.g4 by ANTLR 4.9
 
 
 #include "MyGrammarLexer.h"
@@ -60,9 +60,8 @@ atn::ATN MyGrammarLexer::_atn;
 std::vector<uint16_t> MyGrammarLexer::_serializedATN;
 
 std::vector<std::string> MyGrammarLexer::_ruleNames = {
-  u8"T__0", u8"T__1", u8"T__2", u8"SL_COMMENT", u8"ML_COMMENT", u8"INT", 
-  u8"ESC", u8"STRING", u8"PLUS", u8"MINUS", u8"MULT", u8"EXP", u8"DIV", 
-  u8"MOD", u8"WS"
+  "T__0", "T__1", "T__2", "SL_COMMENT", "ML_COMMENT", "INT", "ESC", "STRING", 
+  "PLUS", "MINUS", "MULT", "EXP", "DIV", "MOD", "WS"
 };
 
 std::vector<std::string> MyGrammarLexer::_channelNames = {
@@ -70,17 +69,17 @@ std::vector<std::string> MyGrammarLexer::_channelNames = {
 };
 
 std::vector<std::string> MyGrammarLexer::_modeNames = {
-  u8"DEFAULT_MODE"
+  "DEFAULT_MODE"
 };
 
 std::vector<std::string> MyGrammarLexer::_literalNames = {
-  "", u8"';'", u8"'?'", u8"':'", "", "", "", "", u8"'+'", u8"'-'", u8"'*'", 
-  u8"'**'", u8"'/'", u8"'%'"
+  "", "';'", "'\u003F'", "':'", "", "", "", "", "'+'", "'-'", "'*'", "'**'", 
+  "'/'", "'%'"
 };
 
 std::vector<std::string> MyGrammarLexer::_symbolicNames = {
-  "", "", "", "", u8"SL_COMMENT", u8"ML_COMMENT", u8"INT", u8"STRING", u8"PLUS", 
-  u8"MINUS", u8"MULT", u8"EXP", u8"DIV", u8"MOD", u8"WS"
+  "", "", "", "", "SL_COMMENT", "ML_COMMENT", "INT", "STRING", "PLUS", "MINUS", 
+  "MULT", "EXP", "DIV", "MOD", "WS"
 };
 
 dfa::Vocabulary MyGrammarLexer::_vocabulary(_literalNames, _symbolicNames);

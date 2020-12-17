@@ -1,5 +1,5 @@
 
-// Generated from MyGrammar.g4 by ANTLR 4.8
+// Generated from MyGrammar.g4 by ANTLR 4.9
 
 
 #include "MyGrammarVisitor.h"
@@ -67,7 +67,11 @@ MyGrammarParser::RootContext* MyGrammarParser::root() {
   enterRule(_localctx, 0, MyGrammarParser::RuleRoot);
   size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
@@ -207,7 +211,11 @@ MyGrammarParser::ExprContext* MyGrammarParser::expr(int precedence) {
 
     size_t _la = 0;
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     unrollRecursionContexts(parentContext);
   });
   try {
@@ -313,6 +321,8 @@ MyGrammarParser::ExprContext* MyGrammarParser::expr(int precedence) {
           break;
         }
 
+        default:
+          break;
         } 
       }
       setState(42);
@@ -359,7 +369,11 @@ MyGrammarParser::LiteralContext* MyGrammarParser::literal() {
   LiteralContext *_localctx = _tracker.createInstance<LiteralContext>(_ctx, getState());
   enterRule(_localctx, 4, MyGrammarParser::RuleLiteral);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
@@ -421,7 +435,11 @@ MyGrammarParser::NumberContext* MyGrammarParser::number() {
   NumberContext *_localctx = _tracker.createInstance<NumberContext>(_ctx, getState());
   enterRule(_localctx, 6, MyGrammarParser::RuleNumber);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
@@ -466,7 +484,11 @@ MyGrammarParser::String_literalContext* MyGrammarParser::string_literal() {
   String_literalContext *_localctx = _tracker.createInstance<String_literalContext>(_ctx, getState());
   enterRule(_localctx, 8, MyGrammarParser::RuleString_literal);
 
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
   auto onExit = finally([=] {
+#endif
     exitRule();
   });
   try {
@@ -520,7 +542,7 @@ std::vector<std::string> MyGrammarParser::_ruleNames = {
 };
 
 std::vector<std::string> MyGrammarParser::_literalNames = {
-  "", "';'", "'?'", "':'", "", "", "", "", "'+'", "'-'", "'*'", "'**'", 
+  "", "';'", "'\u003F'", "':'", "", "", "", "", "'+'", "'-'", "'*'", "'**'", 
   "'/'", "'%'"
 };
 
