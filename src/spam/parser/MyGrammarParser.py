@@ -1,4 +1,4 @@
-# Generated from MyGrammar.g4 by ANTLR 4.9
+# Generated from MyGrammar.g4 by ANTLR 4.9.3
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -77,7 +77,7 @@ class MyGrammarParser ( Parser ):
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
-        self.checkVersion("4.9")
+        self.checkVersion("4.9.3")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -85,6 +85,7 @@ class MyGrammarParser ( Parser ):
 
 
     class RootContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -137,6 +138,7 @@ class MyGrammarParser ( Parser ):
 
 
     class ExprContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -319,6 +321,7 @@ class MyGrammarParser ( Parser ):
 
 
     class LiteralContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -371,6 +374,7 @@ class MyGrammarParser ( Parser ):
 
 
     class NumberContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -403,6 +407,7 @@ class MyGrammarParser ( Parser ):
 
 
     class String_literalContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
