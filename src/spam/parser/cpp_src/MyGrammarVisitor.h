@@ -1,5 +1,5 @@
 
-// Generated from MyGrammar.g4 by ANTLR 4.9.3
+// Generated from MyGrammar.g4 by ANTLR 4.10.1
 
 #pragma once
 
@@ -19,19 +19,19 @@ public:
   /**
    * Visit parse trees produced by MyGrammarParser.
    */
-    virtual antlrcpp::Any visitRoot(MyGrammarParser::RootContext *context) = 0;
+    virtual std::any visitRoot(MyGrammarParser::RootContext *context) = 0;
 
-    virtual antlrcpp::Any visitBinaryExpr(MyGrammarParser::BinaryExprContext *context) = 0;
+    virtual std::any visitBinaryExpr(MyGrammarParser::BinaryExprContext *context) = 0;
 
-    virtual antlrcpp::Any visitNOP(MyGrammarParser::NOPContext *context) = 0;
+    virtual std::any visitNOP(MyGrammarParser::NOPContext *context) = 0;
 
-    virtual antlrcpp::Any visitTernaryExpr(MyGrammarParser::TernaryExprContext *context) = 0;
+    virtual std::any visitTernaryExpr(MyGrammarParser::TernaryExprContext *context) = 0;
 
-    virtual antlrcpp::Any visitLiteral(MyGrammarParser::LiteralContext *context) = 0;
+    virtual std::any visitLiteral(MyGrammarParser::LiteralContext *context) = 0;
 
-    virtual antlrcpp::Any visitNumber(MyGrammarParser::NumberContext *context) = 0;
+    virtual std::any visitNumber(MyGrammarParser::NumberContext *context) = 0;
 
-    virtual antlrcpp::Any visitString_literal(MyGrammarParser::String_literalContext *context) = 0;
+    virtual std::any visitString_literal(MyGrammarParser::String_literalContext *context) = 0;
 
 
 };

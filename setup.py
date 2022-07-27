@@ -15,10 +15,10 @@ def run_setup(with_binary):
     if with_binary:
 
         extra_compile_args = {
-            'windows': ['/DANTLR4CPP_STATIC', '/Zc:__cplusplus'],
-            'linux': ['-std=c++11'],
-            'darwin': ['-std=c++11'],
-            'cygwin': ['-std=c++11'],
+            'windows': ['/DANTLR4CPP_STATIC', '/Zc:__cplusplus', '/std:c++17'],
+            'linux': ['-std=c++17'],
+            'darwin': ['-std=c++17'],
+            'cygwin': ['-std=c++17'],
         }
 
         # Define an Extension object that describes the Antlr accelerator
@@ -47,8 +47,9 @@ def run_setup(with_binary):
         packages=setuptools.find_packages("src"),
         package_dir={"": "src"},
         include_package_data=True,
+        python_requires='>=3.6.0',
         install_requires=[
-            "antlr4-python3-runtime >= 4.9.3",
+            "antlr4-python3-runtime >= 4.10, < 4.11",
         ],
         ext_modules=ext_modules,
         cmdclass={"build_ext": ve_build_ext},

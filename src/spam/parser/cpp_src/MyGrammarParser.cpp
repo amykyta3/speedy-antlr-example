@@ -1,5 +1,5 @@
 
-// Generated from MyGrammar.g4 by ANTLR 4.9.3
+// Generated from MyGrammar.g4 by ANTLR 4.10.1
 
 
 #include "MyGrammarVisitor.h"
@@ -8,14 +8,97 @@
 
 
 using namespace antlrcpp;
+
 using namespace antlr4;
 
-MyGrammarParser::MyGrammarParser(TokenStream *input) : Parser(input) {
-  _interpreter = new atn::ParserATNSimulator(this, _atn, _decisionToDFA, _sharedContextCache);
+namespace {
+
+struct MyGrammarParserStaticData final {
+  MyGrammarParserStaticData(std::vector<std::string> ruleNames,
+                        std::vector<std::string> literalNames,
+                        std::vector<std::string> symbolicNames)
+      : ruleNames(std::move(ruleNames)), literalNames(std::move(literalNames)),
+        symbolicNames(std::move(symbolicNames)),
+        vocabulary(this->literalNames, this->symbolicNames) {}
+
+  MyGrammarParserStaticData(const MyGrammarParserStaticData&) = delete;
+  MyGrammarParserStaticData(MyGrammarParserStaticData&&) = delete;
+  MyGrammarParserStaticData& operator=(const MyGrammarParserStaticData&) = delete;
+  MyGrammarParserStaticData& operator=(MyGrammarParserStaticData&&) = delete;
+
+  std::vector<antlr4::dfa::DFA> decisionToDFA;
+  antlr4::atn::PredictionContextCache sharedContextCache;
+  const std::vector<std::string> ruleNames;
+  const std::vector<std::string> literalNames;
+  const std::vector<std::string> symbolicNames;
+  const antlr4::dfa::Vocabulary vocabulary;
+  antlr4::atn::SerializedATNView serializedATN;
+  std::unique_ptr<antlr4::atn::ATN> atn;
+};
+
+std::once_flag mygrammarParserOnceFlag;
+MyGrammarParserStaticData *mygrammarParserStaticData = nullptr;
+
+void mygrammarParserInitialize() {
+  assert(mygrammarParserStaticData == nullptr);
+  auto staticData = std::make_unique<MyGrammarParserStaticData>(
+    std::vector<std::string>{
+      "root", "expr", "literal", "number", "string_literal"
+    },
+    std::vector<std::string>{
+      "", "';'", "'\\u003F'", "':'", "", "", "", "", "'+'", "'-'", "'*'", 
+      "'**'", "'/'", "'%'"
+    },
+    std::vector<std::string>{
+      "", "", "", "", "SL_COMMENT", "ML_COMMENT", "INT", "STRING", "PLUS", 
+      "MINUS", "MULT", "EXP", "DIV", "MOD", "WS"
+    }
+  );
+  static const int32_t serializedATNSegment[] = {
+  	4,1,14,52,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,1,0,1,0,1,0,5,0,14,
+  	8,0,10,0,12,0,17,9,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+  	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,39,8,1,10,1,12,1,42,9,1,1,2,1,2,3,
+  	2,46,8,2,1,3,1,3,1,4,1,4,1,4,0,1,2,5,0,2,4,6,8,0,2,2,0,10,10,12,13,1,
+  	0,8,9,52,0,15,1,0,0,0,2,20,1,0,0,0,4,45,1,0,0,0,6,47,1,0,0,0,8,49,1,0,
+  	0,0,10,11,3,2,1,0,11,12,5,1,0,0,12,14,1,0,0,0,13,10,1,0,0,0,14,17,1,0,
+  	0,0,15,13,1,0,0,0,15,16,1,0,0,0,16,18,1,0,0,0,17,15,1,0,0,0,18,19,5,0,
+  	0,1,19,1,1,0,0,0,20,21,6,1,-1,0,21,22,3,4,2,0,22,40,1,0,0,0,23,24,10,
+  	5,0,0,24,25,5,11,0,0,25,39,3,2,1,6,26,27,10,4,0,0,27,28,7,0,0,0,28,39,
+  	3,2,1,5,29,30,10,3,0,0,30,31,7,1,0,0,31,39,3,2,1,4,32,33,10,2,0,0,33,
+  	34,5,2,0,0,34,35,3,2,1,0,35,36,5,3,0,0,36,37,3,2,1,2,37,39,1,0,0,0,38,
+  	23,1,0,0,0,38,26,1,0,0,0,38,29,1,0,0,0,38,32,1,0,0,0,39,42,1,0,0,0,40,
+  	38,1,0,0,0,40,41,1,0,0,0,41,3,1,0,0,0,42,40,1,0,0,0,43,46,3,6,3,0,44,
+  	46,3,8,4,0,45,43,1,0,0,0,45,44,1,0,0,0,46,5,1,0,0,0,47,48,5,6,0,0,48,
+  	7,1,0,0,0,49,50,5,7,0,0,50,9,1,0,0,0,4,15,38,40,45
+  };
+  staticData->serializedATN = antlr4::atn::SerializedATNView(serializedATNSegment, sizeof(serializedATNSegment) / sizeof(serializedATNSegment[0]));
+
+  antlr4::atn::ATNDeserializer deserializer;
+  staticData->atn = deserializer.deserialize(staticData->serializedATN);
+
+  const size_t count = staticData->atn->getNumberOfDecisions();
+  staticData->decisionToDFA.reserve(count);
+  for (size_t i = 0; i < count; i++) { 
+    staticData->decisionToDFA.emplace_back(staticData->atn->getDecisionState(i), i);
+  }
+  mygrammarParserStaticData = staticData.release();
+}
+
+}
+
+MyGrammarParser::MyGrammarParser(TokenStream *input) : MyGrammarParser(input, antlr4::atn::ParserATNSimulatorOptions()) {}
+
+MyGrammarParser::MyGrammarParser(TokenStream *input, const antlr4::atn::ParserATNSimulatorOptions &options) : Parser(input) {
+  MyGrammarParser::initialize();
+  _interpreter = new atn::ParserATNSimulator(this, *mygrammarParserStaticData->atn, mygrammarParserStaticData->decisionToDFA, mygrammarParserStaticData->sharedContextCache, options);
 }
 
 MyGrammarParser::~MyGrammarParser() {
   delete _interpreter;
+}
+
+const atn::ATN& MyGrammarParser::getATN() const {
+  return *mygrammarParserStaticData->atn;
 }
 
 std::string MyGrammarParser::getGrammarFileName() const {
@@ -23,11 +106,15 @@ std::string MyGrammarParser::getGrammarFileName() const {
 }
 
 const std::vector<std::string>& MyGrammarParser::getRuleNames() const {
-  return _ruleNames;
+  return mygrammarParserStaticData->ruleNames;
 }
 
-dfa::Vocabulary& MyGrammarParser::getVocabulary() const {
-  return _vocabulary;
+const dfa::Vocabulary& MyGrammarParser::getVocabulary() const {
+  return mygrammarParserStaticData->vocabulary;
+}
+
+antlr4::atn::SerializedATNView MyGrammarParser::getSerializedATN() const {
+  return mygrammarParserStaticData->serializedATN;
 }
 
 
@@ -55,7 +142,7 @@ size_t MyGrammarParser::RootContext::getRuleIndex() const {
 }
 
 
-antlrcpp::Any MyGrammarParser::RootContext::accept(tree::ParseTreeVisitor *visitor) {
+std::any MyGrammarParser::RootContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
     return parserVisitor->visitRoot(this);
   else
@@ -155,7 +242,7 @@ tree::TerminalNode* MyGrammarParser::BinaryExprContext::MINUS() {
 MyGrammarParser::BinaryExprContext::BinaryExprContext(ExprContext *ctx) { copyFrom(ctx); }
 
 
-antlrcpp::Any MyGrammarParser::BinaryExprContext::accept(tree::ParseTreeVisitor *visitor) {
+std::any MyGrammarParser::BinaryExprContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
     return parserVisitor->visitBinaryExpr(this);
   else
@@ -170,7 +257,7 @@ MyGrammarParser::LiteralContext* MyGrammarParser::NOPContext::literal() {
 MyGrammarParser::NOPContext::NOPContext(ExprContext *ctx) { copyFrom(ctx); }
 
 
-antlrcpp::Any MyGrammarParser::NOPContext::accept(tree::ParseTreeVisitor *visitor) {
+std::any MyGrammarParser::NOPContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
     return parserVisitor->visitNOP(this);
   else
@@ -189,7 +276,7 @@ MyGrammarParser::ExprContext* MyGrammarParser::TernaryExprContext::expr(size_t i
 MyGrammarParser::TernaryExprContext::TernaryExprContext(ExprContext *ctx) { copyFrom(ctx); }
 
 
-antlrcpp::Any MyGrammarParser::TernaryExprContext::accept(tree::ParseTreeVisitor *visitor) {
+std::any MyGrammarParser::TernaryExprContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
     return parserVisitor->visitTernaryExpr(this);
   else
@@ -358,7 +445,7 @@ size_t MyGrammarParser::LiteralContext::getRuleIndex() const {
 }
 
 
-antlrcpp::Any MyGrammarParser::LiteralContext::accept(tree::ParseTreeVisitor *visitor) {
+std::any MyGrammarParser::LiteralContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
     return parserVisitor->visitLiteral(this);
   else
@@ -424,7 +511,7 @@ size_t MyGrammarParser::NumberContext::getRuleIndex() const {
 }
 
 
-antlrcpp::Any MyGrammarParser::NumberContext::accept(tree::ParseTreeVisitor *visitor) {
+std::any MyGrammarParser::NumberContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
     return parserVisitor->visitNumber(this);
   else
@@ -473,7 +560,7 @@ size_t MyGrammarParser::String_literalContext::getRuleIndex() const {
 }
 
 
-antlrcpp::Any MyGrammarParser::String_literalContext::accept(tree::ParseTreeVisitor *visitor) {
+std::any MyGrammarParser::String_literalContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<MyGrammarVisitor*>(visitor))
     return parserVisitor->visitString_literal(this);
   else
@@ -529,97 +616,6 @@ bool MyGrammarParser::exprSempred(ExprContext *_localctx, size_t predicateIndex)
   return true;
 }
 
-// Static vars and initialization.
-std::vector<dfa::DFA> MyGrammarParser::_decisionToDFA;
-atn::PredictionContextCache MyGrammarParser::_sharedContextCache;
-
-// We own the ATN which in turn owns the ATN states.
-atn::ATN MyGrammarParser::_atn;
-std::vector<uint16_t> MyGrammarParser::_serializedATN;
-
-std::vector<std::string> MyGrammarParser::_ruleNames = {
-  "root", "expr", "literal", "number", "string_literal"
-};
-
-std::vector<std::string> MyGrammarParser::_literalNames = {
-  "", "';'", "'\u003F'", "':'", "", "", "", "", "'+'", "'-'", "'*'", "'**'", 
-  "'/'", "'%'"
-};
-
-std::vector<std::string> MyGrammarParser::_symbolicNames = {
-  "", "", "", "", "SL_COMMENT", "ML_COMMENT", "INT", "STRING", "PLUS", "MINUS", 
-  "MULT", "EXP", "DIV", "MOD", "WS"
-};
-
-dfa::Vocabulary MyGrammarParser::_vocabulary(_literalNames, _symbolicNames);
-
-std::vector<std::string> MyGrammarParser::_tokenNames;
-
-MyGrammarParser::Initializer::Initializer() {
-	for (size_t i = 0; i < _symbolicNames.size(); ++i) {
-		std::string name = _vocabulary.getLiteralName(i);
-		if (name.empty()) {
-			name = _vocabulary.getSymbolicName(i);
-		}
-
-		if (name.empty()) {
-			_tokenNames.push_back("<INVALID>");
-		} else {
-      _tokenNames.push_back(name);
-    }
-	}
-
-  static const uint16_t serializedATNSegment0[] = {
-    0x3, 0x608b, 0xa72a, 0x8133, 0xb9ed, 0x417c, 0x3be7, 0x7786, 0x5964, 
-       0x3, 0x10, 0x36, 0x4, 0x2, 0x9, 0x2, 0x4, 0x3, 0x9, 0x3, 0x4, 0x4, 
-       0x9, 0x4, 0x4, 0x5, 0x9, 0x5, 0x4, 0x6, 0x9, 0x6, 0x3, 0x2, 0x3, 
-       0x2, 0x3, 0x2, 0x7, 0x2, 0x10, 0xa, 0x2, 0xc, 0x2, 0xe, 0x2, 0x13, 
-       0xb, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 
-       0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 
-       0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 
-       0x3, 0x3, 0x3, 0x7, 0x3, 0x29, 0xa, 0x3, 0xc, 0x3, 0xe, 0x3, 0x2c, 
-       0xb, 0x3, 0x3, 0x4, 0x3, 0x4, 0x5, 0x4, 0x30, 0xa, 0x4, 0x3, 0x5, 
-       0x3, 0x5, 0x3, 0x6, 0x3, 0x6, 0x3, 0x6, 0x2, 0x3, 0x4, 0x7, 0x2, 
-       0x4, 0x6, 0x8, 0xa, 0x2, 0x4, 0x4, 0x2, 0xc, 0xc, 0xe, 0xf, 0x3, 
-       0x2, 0xa, 0xb, 0x2, 0x36, 0x2, 0x11, 0x3, 0x2, 0x2, 0x2, 0x4, 0x16, 
-       0x3, 0x2, 0x2, 0x2, 0x6, 0x2f, 0x3, 0x2, 0x2, 0x2, 0x8, 0x31, 0x3, 
-       0x2, 0x2, 0x2, 0xa, 0x33, 0x3, 0x2, 0x2, 0x2, 0xc, 0xd, 0x5, 0x4, 
-       0x3, 0x2, 0xd, 0xe, 0x7, 0x3, 0x2, 0x2, 0xe, 0x10, 0x3, 0x2, 0x2, 
-       0x2, 0xf, 0xc, 0x3, 0x2, 0x2, 0x2, 0x10, 0x13, 0x3, 0x2, 0x2, 0x2, 
-       0x11, 0xf, 0x3, 0x2, 0x2, 0x2, 0x11, 0x12, 0x3, 0x2, 0x2, 0x2, 0x12, 
-       0x14, 0x3, 0x2, 0x2, 0x2, 0x13, 0x11, 0x3, 0x2, 0x2, 0x2, 0x14, 0x15, 
-       0x7, 0x2, 0x2, 0x3, 0x15, 0x3, 0x3, 0x2, 0x2, 0x2, 0x16, 0x17, 0x8, 
-       0x3, 0x1, 0x2, 0x17, 0x18, 0x5, 0x6, 0x4, 0x2, 0x18, 0x2a, 0x3, 0x2, 
-       0x2, 0x2, 0x19, 0x1a, 0xc, 0x7, 0x2, 0x2, 0x1a, 0x1b, 0x7, 0xd, 0x2, 
-       0x2, 0x1b, 0x29, 0x5, 0x4, 0x3, 0x8, 0x1c, 0x1d, 0xc, 0x6, 0x2, 0x2, 
-       0x1d, 0x1e, 0x9, 0x2, 0x2, 0x2, 0x1e, 0x29, 0x5, 0x4, 0x3, 0x7, 0x1f, 
-       0x20, 0xc, 0x5, 0x2, 0x2, 0x20, 0x21, 0x9, 0x3, 0x2, 0x2, 0x21, 0x29, 
-       0x5, 0x4, 0x3, 0x6, 0x22, 0x23, 0xc, 0x4, 0x2, 0x2, 0x23, 0x24, 0x7, 
-       0x4, 0x2, 0x2, 0x24, 0x25, 0x5, 0x4, 0x3, 0x2, 0x25, 0x26, 0x7, 0x5, 
-       0x2, 0x2, 0x26, 0x27, 0x5, 0x4, 0x3, 0x4, 0x27, 0x29, 0x3, 0x2, 0x2, 
-       0x2, 0x28, 0x19, 0x3, 0x2, 0x2, 0x2, 0x28, 0x1c, 0x3, 0x2, 0x2, 0x2, 
-       0x28, 0x1f, 0x3, 0x2, 0x2, 0x2, 0x28, 0x22, 0x3, 0x2, 0x2, 0x2, 0x29, 
-       0x2c, 0x3, 0x2, 0x2, 0x2, 0x2a, 0x28, 0x3, 0x2, 0x2, 0x2, 0x2a, 0x2b, 
-       0x3, 0x2, 0x2, 0x2, 0x2b, 0x5, 0x3, 0x2, 0x2, 0x2, 0x2c, 0x2a, 0x3, 
-       0x2, 0x2, 0x2, 0x2d, 0x30, 0x5, 0x8, 0x5, 0x2, 0x2e, 0x30, 0x5, 0xa, 
-       0x6, 0x2, 0x2f, 0x2d, 0x3, 0x2, 0x2, 0x2, 0x2f, 0x2e, 0x3, 0x2, 0x2, 
-       0x2, 0x30, 0x7, 0x3, 0x2, 0x2, 0x2, 0x31, 0x32, 0x7, 0x8, 0x2, 0x2, 
-       0x32, 0x9, 0x3, 0x2, 0x2, 0x2, 0x33, 0x34, 0x7, 0x9, 0x2, 0x2, 0x34, 
-       0xb, 0x3, 0x2, 0x2, 0x2, 0x6, 0x11, 0x28, 0x2a, 0x2f, 
-  };
-
-  _serializedATN.insert(_serializedATN.end(), serializedATNSegment0,
-    serializedATNSegment0 + sizeof(serializedATNSegment0) / sizeof(serializedATNSegment0[0]));
-
-
-  atn::ATNDeserializer deserializer;
-  _atn = deserializer.deserialize(_serializedATN);
-
-  size_t count = _atn.getNumberOfDecisions();
-  _decisionToDFA.reserve(count);
-  for (size_t i = 0; i < count; i++) { 
-    _decisionToDFA.emplace_back(_atn.getDecisionState(i), i);
-  }
+void MyGrammarParser::initialize() {
+  std::call_once(mygrammarParserOnceFlag, mygrammarParserInitialize);
 }
-
-MyGrammarParser::Initializer MyGrammarParser::_init;

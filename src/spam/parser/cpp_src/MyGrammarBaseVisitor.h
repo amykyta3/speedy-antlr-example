@@ -1,5 +1,5 @@
 
-// Generated from MyGrammar.g4 by ANTLR 4.9.3
+// Generated from MyGrammar.g4 by ANTLR 4.10.1
 
 #pragma once
 
@@ -15,31 +15,31 @@
 class  MyGrammarBaseVisitor : public MyGrammarVisitor {
 public:
 
-  virtual antlrcpp::Any visitRoot(MyGrammarParser::RootContext *ctx) override {
+  virtual std::any visitRoot(MyGrammarParser::RootContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitBinaryExpr(MyGrammarParser::BinaryExprContext *ctx) override {
+  virtual std::any visitBinaryExpr(MyGrammarParser::BinaryExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitNOP(MyGrammarParser::NOPContext *ctx) override {
+  virtual std::any visitNOP(MyGrammarParser::NOPContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitTernaryExpr(MyGrammarParser::TernaryExprContext *ctx) override {
+  virtual std::any visitTernaryExpr(MyGrammarParser::TernaryExprContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitLiteral(MyGrammarParser::LiteralContext *ctx) override {
+  virtual std::any visitLiteral(MyGrammarParser::LiteralContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitNumber(MyGrammarParser::NumberContext *ctx) override {
+  virtual std::any visitNumber(MyGrammarParser::NumberContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitString_literal(MyGrammarParser::String_literalContext *ctx) override {
+  virtual std::any visitString_literal(MyGrammarParser::String_literalContext *ctx) override {
     return visitChildren(ctx);
   }
 
