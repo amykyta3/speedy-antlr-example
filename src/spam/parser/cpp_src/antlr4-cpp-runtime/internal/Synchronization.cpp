@@ -23,20 +23,78 @@
 // WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
 // WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#pragma once
+#include "internal/Synchronization.h"
 
-#include "antlr4-common.h"
+using namespace antlr4::internal;
 
-#define ANTLRCPP_VERSION_MAJOR 4
-#define ANTLRCPP_VERSION_MINOR 11
-#define ANTLRCPP_VERSION_PATCH 1
+void Mutex::lock() {
+#if ANTLR4CPP_USING_ABSEIL
+  _impl.Lock();
+#else
+  _impl.lock();
+#endif
+}
 
-#define ANTLRCPP_MAKE_VERSION(major, minor, patch) ((major) * 100000 + (minor) * 1000 + (patch))
+bool Mutex::try_lock() {
+#if ANTLR4CPP_USING_ABSEIL
+  return _impl.TryLock();
+#else
+  return _impl.try_lock();
+#endif
+}
 
-#define ANTLRCPP_VERSION \
-  ANTLRCPP_MAKE_VERSION(ANTLR4CPP_VERSION_MAJOR, ANTLR4CPP_VERSION_MINOR, ANTLR4CPP_VERSION_PATCH)
+void Mutex::unlock() {
+#if ANTLR4CPP_USING_ABSEIL
+  _impl.Unlock();
+#else
+  _impl.unlock();
+#endif
+}
 
-#define ANTLRCPP_VERSION_STRING \
-  ANTLR4CPP_STRINGIFY(ANTLR4CPP_VERSION_MAJOR) "." \
-  ANTLR4CPP_STRINGIFY(ANTLR4CPP_VERSION_MINOR) "." \
-  ANTLR4CPP_STRINGIFY(ANTLR4CPP_VERSION_PATCH)
+void SharedMutex::lock() {
+#if ANTLR4CPP_USING_ABSEIL
+  _impl.WriterLock();
+#else
+  _impl.lock();
+#endif
+}
+
+bool SharedMutex::try_lock() {
+#if ANTLR4CPP_USING_ABSEIL
+  return _impl.WriterTryLock();
+#else
+  return _impl.try_lock();
+#endif
+}
+
+void SharedMutex::unlock() {
+#if ANTLR4CPP_USING_ABSEIL
+  _impl.WriterUnlock();
+#else
+  _impl.unlock();
+#endif
+}
+
+void SharedMutex::lock_shared() {
+#if ANTLR4CPP_USING_ABSEIL
+  _impl.ReaderLock();
+#else
+  _impl.lock_shared();
+#endif
+}
+
+bool SharedMutex::try_lock_shared() {
+#if ANTLR4CPP_USING_ABSEIL
+  return _impl.ReaderTryLock();
+#else
+  return _impl.try_lock_shared();
+#endif
+}
+
+void SharedMutex::unlock_shared() {
+#if ANTLR4CPP_USING_ABSEIL
+  _impl.ReaderUnlock();
+#else
+  _impl.unlock_shared();
+#endif
+}

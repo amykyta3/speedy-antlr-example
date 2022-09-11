@@ -1,7 +1,7 @@
 #!/bin/bash
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
-antlr4="java -Xmx500M -cp /usr/local/lib/antlr-4.10.1-complete.jar org.antlr.v4.Tool"
+antlr4="java -Xmx500M -cp /usr/local/lib/antlr-4.11.1-complete.jar org.antlr.v4.Tool"
 
 # Generate C++ target with visitor
 $antlr4 -Dlanguage=Cpp -o cpp_src MyGrammarLexer.g4

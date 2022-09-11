@@ -1,5 +1,5 @@
 
-// Generated from MyGrammar.g4 by ANTLR 4.10.1
+// Generated from MyGrammar.g4 by ANTLR 4.11.1
 
 
 #include "MyGrammarLexer.h"
@@ -41,7 +41,7 @@ struct MyGrammarLexerStaticData final {
   std::unique_ptr<antlr4::atn::ATN> atn;
 };
 
-std::once_flag mygrammarlexerLexerOnceFlag;
+::antlr4::internal::OnceFlag mygrammarlexerLexerOnceFlag;
 MyGrammarLexerStaticData *mygrammarlexerLexerStaticData = nullptr;
 
 void mygrammarlexerLexerInitialize() {
@@ -158,5 +158,5 @@ const atn::ATN& MyGrammarLexer::getATN() const {
 
 
 void MyGrammarLexer::initialize() {
-  std::call_once(mygrammarlexerLexerOnceFlag, mygrammarlexerLexerInitialize);
+  ::antlr4::internal::call_once(mygrammarlexerLexerOnceFlag, mygrammarlexerLexerInitialize);
 }

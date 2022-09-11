@@ -1,4 +1,4 @@
-# Generated from MyGrammar.g4 by ANTLR 4.10.1
+# Generated from MyGrammar.g4 by ANTLR 4.11.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -72,7 +72,7 @@ class MyGrammarParser ( Parser ):
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
-        self.checkVersion("4.10.1")
+        self.checkVersion("4.11.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -112,7 +112,7 @@ class MyGrammarParser ( Parser ):
             self.state = 15
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==MyGrammarParser.INT or _la==MyGrammarParser.STRING:
+            while _la==6 or _la==7:
                 self.state = 10
                 self.expr(0)
                 self.state = 11
@@ -255,7 +255,7 @@ class MyGrammarParser ( Parser ):
                         self.state = 27
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << MyGrammarParser.MULT) | (1 << MyGrammarParser.DIV) | (1 << MyGrammarParser.MOD))) != 0)):
+                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 13312) != 0):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -274,7 +274,7 @@ class MyGrammarParser ( Parser ):
                         self.state = 30
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(_la==MyGrammarParser.PLUS or _la==MyGrammarParser.MINUS):
+                        if not(_la==8 or _la==9):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -346,12 +346,12 @@ class MyGrammarParser ( Parser ):
             self.state = 45
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [MyGrammarParser.INT]:
+            if token in [6]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 43
                 localctx.xnum = self.number()
                 pass
-            elif token in [MyGrammarParser.STRING]:
+            elif token in [7]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 44
                 localctx.xstr = self.string_literal()

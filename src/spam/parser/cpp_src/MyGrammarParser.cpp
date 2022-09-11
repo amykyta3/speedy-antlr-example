@@ -1,5 +1,5 @@
 
-// Generated from MyGrammar.g4 by ANTLR 4.10.1
+// Generated from MyGrammar.g4 by ANTLR 4.11.1
 
 
 #include "MyGrammarVisitor.h"
@@ -36,7 +36,7 @@ struct MyGrammarParserStaticData final {
   std::unique_ptr<antlr4::atn::ATN> atn;
 };
 
-std::once_flag mygrammarParserOnceFlag;
+::antlr4::internal::OnceFlag mygrammarParserOnceFlag;
 MyGrammarParserStaticData *mygrammarParserStaticData = nullptr;
 
 void mygrammarParserInitialize() {
@@ -350,10 +350,8 @@ MyGrammarParser::ExprContext* MyGrammarParser::expr(int precedence) {
           setState(27);
           antlrcpp::downCast<BinaryExprContext *>(_localctx)->op = _input->LT(1);
           _la = _input->LA(1);
-          if (!((((_la & ~ 0x3fULL) == 0) &&
-            ((1ULL << _la) & ((1ULL << MyGrammarParser::MULT)
-            | (1ULL << MyGrammarParser::DIV)
-            | (1ULL << MyGrammarParser::MOD))) != 0))) {
+          if (!(((_la & ~ 0x3fULL) == 0) &&
+            ((1ULL << _la) & 13312) != 0)) {
             antlrcpp::downCast<BinaryExprContext *>(_localctx)->op = _errHandler->recoverInline(this);
           }
           else {
@@ -617,5 +615,5 @@ bool MyGrammarParser::exprSempred(ExprContext *_localctx, size_t predicateIndex)
 }
 
 void MyGrammarParser::initialize() {
-  std::call_once(mygrammarParserOnceFlag, mygrammarParserInitialize);
+  ::antlr4::internal::call_once(mygrammarParserOnceFlag, mygrammarParserInitialize);
 }

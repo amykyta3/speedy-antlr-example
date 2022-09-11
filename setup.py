@@ -49,7 +49,7 @@ def run_setup(with_binary):
         include_package_data=True,
         python_requires='>=3.6.0',
         install_requires=[
-            "antlr4-python3-runtime >= 4.10, < 4.11",
+            "antlr4-python3-runtime >= 4.11, < 4.12",
         ],
         ext_modules=ext_modules,
         cmdclass={"build_ext": ve_build_ext},
